@@ -25,8 +25,8 @@ public class Controller {
 					+ "\n  3. Multiplicación de Matrices (Sin usar Divide y Vencerás)");
 			switch (opcion) {
 			case 1: {
-				BigInteger num1 = BigInteger.valueOf(vista.leerDatoLong("Ingrese el primer número"));
-				BigInteger num2 = BigInteger.valueOf(vista.leerDatoLong("Ingrese el segundo número"));
+				BigInteger num1 = new BigInteger(vista.leerDato("Ingrese el primer número"));
+				BigInteger num2 = new BigInteger(vista.leerDato("Ingrese el segundo número"));
 				vista.mostrarInformacion("El resultado de la multiplicación de "+num1+" y "+num2+" es: "+mBigInt.mult(num1, num2));
 				break;
 			}
