@@ -19,12 +19,10 @@ public class MultArrays {
 	
 	public int[][] multiplicarNormal(){
 		resulNormal = new int [matrizA.length][matrizB[0].length];
-		if (matrizA.length == matrizB[0].length){
-			for (int i = 0; i < matrizA.length;i++) {
-				for(int j = 0; i < matrizB[0].length;j++) {
-					for(int k = 0; k <matrizA[0].length;k++) {
-						resulNormal[i][j] = resulNormal[i][j]+(matrizA[i][k]*matrizB[k][j]) ;
-					}
+		for (int i = 0; i < matrizA.length;i++) {
+			for(int j = 0; i < matrizB[0].length;j++) {
+				for(int k = 0; k <matrizA[0].length;k++) {
+					resulNormal[i][j] = resulNormal[i][j]+(matrizA[i][k]*matrizB[k][j]) ;
 				}
 			}
 		}
