@@ -9,6 +9,7 @@ public class MultArrays {
 		
 	}
 	
+	
 	public int[][] multiplicarNormal(int[][] matriz1, int[][] matriz2){
 		int [][] matrizsol = new int [matriz1.length][matriz2[0].length];
 		if (matriz1.length == matriz2[0].length){
