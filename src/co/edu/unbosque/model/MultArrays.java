@@ -11,7 +11,7 @@ public class MultArrays {
 		
 	}
 	
-	public int[] multiplicarDivyVenc() {
+	public int[][] multiplicarDivyVenc() {
 		resulDivyVen = new int[matrizA.length][matrizB[0].length];
 		
 		return resulDivyVen;
