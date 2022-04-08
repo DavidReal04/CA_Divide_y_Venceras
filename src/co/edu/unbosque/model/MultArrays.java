@@ -59,4 +59,20 @@ public class MultArrays {
 		this.matrizB = matrizB;
 	}
 
+	public int[][] getResulNormal() {
+		return resulNormal;
+	}
+
+	public void setResulNormal(int[][] resulNormal) {
+		this.resulNormal = resulNormal;
+	}
+
+	public int[][] getResulDivyVen() {
+		return resulDivyVen;
+	}
+
+	public void setResulDivyVen(int[][] resulDivyVen) {
+		this.resulDivyVen = resulDivyVen;
+	}
+
 }
