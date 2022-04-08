@@ -40,25 +40,28 @@ public class Controller {
 			}
 			case 3: {
 				vista.mostrarInformacion("Ingrese tamaño de la primera matriz n x m");
-				int tamX1 = vista.leerDatoInt("Ingrese n");
-				int tamY1 = vista.leerDatoInt("Ingrese m");
-				if(tamX1>0 && tamY1>0) {
+				int fila1 = vista.leerDatoInt("Ingrese filas");
+				int col1 = vista.leerDatoInt("Ingrese columnas");
+				if(col1>0 && fila1>0) {
 					vista.mostrarInformacion("Ingrese tamaño de la segunda matriz n x m");
-					int tamX2 = vista.leerDatoInt("Ingrese n");
-					int tamY2 = vista.leerDatoInt("Ingrese m");
-					if(tamX2>0 && tamY2>0) {
-						if(tamX1==tamY2) {
-							mArrays.setMatrizA(new int[tamX1][tamY1]);
-							mArrays.setMatrizB(new int[tamX2][tamY2]);
+					int fila2 = vista.leerDatoInt("Ingrese filas");
+					int col2 = vista.leerDatoInt("Ingrese columas");
+					if(col2>0 && fila2>0) {
+						if(col1==fila2) {
+							mArrays.setMatrizA(new int[fila1][col1]);
+							mArrays.setMatrizB(new int[fila2][col2]);
 							vista.mostrarInformacion("Ingreso de datos primera matriz");
-							if(ingresarMatriz(mArrays.getMatrizA(),tamX1,tamY1).equals("error")) {
+							if(ingresarMatriz(mArrays.getMatrizA(),col1,fila1).equals("error")) {
 								throw new NumberFormatException("array");
 							}else{
+								vista.mostrarInformacion("Primera Matriz\n"+verMatriz(mArrays.getMatrizA()));
 								vista.mostrarInformacion("Ingreso de datos segunda matriz");
-								if(ingresarMatriz(mArrays.getMatrizB(),tamX2,tamY2).equals("error")) {
+								if(ingresarMatriz(mArrays.getMatrizB(),col2,fila2).equals("error")) {
 									throw new NumberFormatException("array");
 								}else {
-									vista.mostrarInformacion("Ingreso exitoso");
+									vista.mostrarInformacion("Segunda Matriz\n"+verMatriz(mArrays.getMatrizB()));
+									vista.mostrarInformacion("Ingreso exitoso");									
+									mArrays.mult(col1, fila1, col2, fila2);
 								}	
 							}
 						}else {
@@ -87,19 +90,32 @@ public class Controller {
 		
 	}
 	
-	public String ingresarMatriz(int[][] matriz,int x, int y) {
-		for (int i = 0; i < y; i++) {
-			String[] elementos = vista.leerDato("Ingrese los numeros la fila "+(i+1)+" separados por un espacio\n Ej: 1 2 3 4 5").split(" ");
-			if(elementos.length==x) {
-				String resul = mArrays.agregarFila(matriz, i, elementos, x);
-				if(resul.equals("error")) {
+	public String ingresarMatriz(int[][] matriz,int col, int fila) {
+		try {
+			for (int i = 0; i < fila; i++) {
+				String[] elementos = vista.leerDato("Ingrese los numeros la fila "+(i+1)+" separados por un espacio\n Ej: 1 2 3 4 5").split(" ");
+				if(elementos.length==col) {
+					String resul = mArrays.agregarFila(matriz, i, elementos, col);
+					if(resul.equals("error")) {
+						return "error";
+					}
+				}else {
 					return "error";
 				}
-			}else {
-				return "error";
 			}
-		}
+		}catch(NullPointerException e) {return "error";}
 		return "ok";
+	}
+	public String verMatriz(int[][] matriz) {
+		String resul="[";
+		for (int[] x : matriz) {
+			String aux="(";
+			for (int i : x) {
+				aux+=" "+i;
+			}
+			resul+=aux+" ), ";
+		}
+		return resul = resul.substring(0,resul.length()-2)+"]";
 	}
 	
 }
