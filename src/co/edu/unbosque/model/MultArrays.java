@@ -4,15 +4,22 @@ public class MultArrays {
 	
 	private int[][] matrizA;
 	private int[][] matrizB;
+	private int[][] resul;
 	
 	public MultArrays() {	
 		
 	}
 	
-	public String agregarFila(int[][] matriz, int numFila, String[] elementos, int tamX) {
+	public int[][] mult(int col1, int fila1, int col2, int fila2) {
+		resul = new int[fila1][col2];
+		
+		return resul;
+	}
+	
+	public String agregarFila(int[][] matriz, int numFila, String[] elementos, int col) {
 		try{
-			for (int i=0;i<tamX;i++) {
-				matriz[i][numFila] = Integer.parseInt(elementos[i]);
+			for (int i=0;i<col;i++) {
+				matriz[numFila][i] = Integer.parseInt(elementos[i]);
 			}
 		}catch(NumberFormatException e) {
 			return "error";
