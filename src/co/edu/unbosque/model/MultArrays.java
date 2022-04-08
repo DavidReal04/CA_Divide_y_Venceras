@@ -11,7 +11,7 @@ public class MultArrays {
 		
 	}
 	
-	public int[] multiplicarDivyVenc() {
+	public int[][] multiplicarDivyVenc() {
 		resulDivyVen = new int[matrizA.length][matrizB[0].length];
 		
 		return resulDivyVen;
@@ -57,6 +57,22 @@ public class MultArrays {
 
 	public void setMatrizB(int[][] matrizB) {
 		this.matrizB = matrizB;
+	}
+
+	public int[][] getResulNormal() {
+		return resulNormal;
+	}
+
+	public void setResulNormal(int[][] resulNormal) {
+		this.resulNormal = resulNormal;
+	}
+
+	public int[][] getResulDivyVen() {
+		return resulDivyVen;
+	}
+
+	public void setResulDivyVen(int[][] resulDivyVen) {
+		this.resulDivyVen = resulDivyVen;
 	}
 
 }

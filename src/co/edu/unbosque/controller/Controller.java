@@ -54,14 +54,15 @@ public class Controller {
 							if(ingresarMatriz(mArrays.getMatrizA(),col1,fila1).equals("error")) {
 								throw new NumberFormatException("array");
 							}else{
-								vista.mostrarInformacion("Primera Matriz\n"+verMatriz(mArrays.getMatrizA()));
+								vista.mostrarInformacion("Primera Matriz\n"+matriz_String(mArrays.getMatrizA()));
 								vista.mostrarInformacion("Ingreso de datos segunda matriz");
 								if(ingresarMatriz(mArrays.getMatrizB(),col2,fila2).equals("error")) {
 									throw new NumberFormatException("array");
 								}else {
-									vista.mostrarInformacion("Segunda Matriz\n"+verMatriz(mArrays.getMatrizB()));
+									vista.mostrarInformacion("Segunda Matriz\n"+matriz_String(mArrays.getMatrizB()));
 									vista.mostrarInformacion("Ingreso exitoso");									
-									mArrays.mult(col1, fila1, col2, fila2);
+									mArrays.multiplicarNormal();
+									vista.mostrarInformacion(matriz_String(mArrays.getResulNormal()));
 								}	
 							}
 						}else {
@@ -106,7 +107,8 @@ public class Controller {
 		}catch(NullPointerException e) {return "error";}
 		return "ok";
 	}
-	public String verMatriz(int[][] matriz) {
+	
+	public String matriz_String(int[][] matriz) {
 		String resul="[";
 		for (int[] x : matriz) {
 			String aux="(";
