@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.util.Arrays;
+
 public class MultArrays {
 	
 	private int[][] matrizA;
@@ -123,6 +125,40 @@ public class MultArrays {
             }
         }
     }
+    
+    public int[][] completarMatriz(int[][] matriz, int num) {    	
+    	while(potencia2(num)==false) {
+    		num++;
+    	}
+    	int[][] matrizCuadrada=new int[num][num];
+    	for(int[] fila: matrizCuadrada) {
+    		Arrays.fill(fila, 0);
+    	}    	
+    	for(int i=0; i<matriz.length ; i++){
+    		for (int j = 0; j < matriz[0].length; j++) {
+				matrizCuadrada[i][j] = matriz[i][j];
+			}
+    	}
+    	System.out.println(Arrays.deepToString(matrizCuadrada));
+    	return matrizCuadrada;
+    }
+    
+    public boolean potencia2(int num) {
+    	while(num!=1) {
+    		if(num%2 !=0) {
+    			return false;
+    		}
+    		num = num/2;
+    	}
+    	return true;
+    }
+    
+    public int getMax(int num1, int num2) {
+		if(num1>num2) {
+			return num1;
+		}
+		return num2;
+	}
 
 	public int[][] getMatrizA() {
 		return matrizA;
