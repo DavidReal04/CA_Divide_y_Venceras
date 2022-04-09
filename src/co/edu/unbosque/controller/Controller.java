@@ -34,8 +34,42 @@ public class Controller {
 				break;
 			}
 			case 2: {
-				
-				
+				vista.mostrarInformacion("Ingrese tamaño de la primera matriz n x m");
+				int fila1 = vista.leerDatoInt("Ingrese filas");
+				int col1 = vista.leerDatoInt("Ingrese columnas");
+				if(col1>0 && fila1>0) {
+					vista.mostrarInformacion("Ingrese tamaño de la segunda matriz n x m");
+					int fila2 = vista.leerDatoInt("Ingrese filas");
+					int col2 = vista.leerDatoInt("Ingrese columas");
+					if(col2>0 && fila2>0) {
+						if(col1==fila2) {
+							mArrays.setMatrizA(new int[fila1][col1]);
+							mArrays.setMatrizB(new int[fila2][col2]);
+							vista.mostrarInformacion("Ingreso de datos primera matriz");
+							if(ingresarMatriz(mArrays.getMatrizA(),col1,fila1).equals("error")) {
+								throw new NumberFormatException("array");
+							}else{
+								vista.mostrarInformacion("Primera Matriz\n"+matriz_String(mArrays.getMatrizA()));
+								vista.mostrarInformacion("Ingreso de datos segunda matriz");
+								if(ingresarMatriz(mArrays.getMatrizB(),col2,fila2).equals("error")) {
+									throw new NumberFormatException("array");
+								}else {
+									vista.mostrarInformacion("Segunda Matriz\n"+matriz_String(mArrays.getMatrizB()));
+									vista.mostrarInformacion("Ingreso exitoso");									
+									mArrays.multiplicarNormal();
+									vista.mostrarInformacion(matriz_String(mArrays.getResulNormal()));
+								}	
+							}
+						}else {
+							vista.mostrarInformacion("Matrices incompatibles para multiplicar"
+									+ "\nEl número de columnas de la primera debe ser igual al número de filas de la segunda");
+						}
+					}else {
+						vista.mostrarInformacion("Ingrese números enteros mayores a 0");
+					}
+				}else {
+					vista.mostrarInformacion("Ingrese números enteros mayores a 0");
+				}
 				break;
 			}
 			case 3: {

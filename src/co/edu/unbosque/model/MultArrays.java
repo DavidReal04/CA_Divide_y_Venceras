@@ -11,12 +11,6 @@ public class MultArrays {
 		
 	}
 	
-	public int[][] multiplicarDivyVenc() {
-		resulDivyVen = new int[matrizA.length][matrizB[0].length];
-		
-		return resulDivyVen;
-	}
-	
 	public int[][] multiplicarNormal(){
 		resulNormal = new int [matrizA.length][matrizB[0].length];
 		for (int i = 0; i < matrizA.length;i++) {
@@ -40,6 +34,96 @@ public class MultArrays {
 		}
 		return "ok";
 	}
+	
+	public int[][] multiplicarDivyVenc(int[][] matrizA, int[][] matrizB){
+        int n = matrizA.length;
+ 
+        int[][] resulDivyVen = new int[n][n];
+ 
+        if (n == 1) {
+ 
+        	resulDivyVen[0][0] = matrizA[0][0] * matrizB[0][0];
+        }
+        
+        else {
+        	
+            int[][] A11 = new int[n / 2][n / 2];
+            int[][] A12 = new int[n / 2][n / 2];
+            int[][] A21 = new int[n / 2][n / 2];
+            int[][] A22 = new int[n / 2][n / 2];
+            int[][] B11 = new int[n / 2][n / 2];
+            int[][] B12 = new int[n / 2][n / 2];
+            int[][] B21 = new int[n / 2][n / 2];
+            int[][] B22 = new int[n / 2][n / 2];
+
+            div(matrizA, A11, 0, 0);
+            div(matrizA, A12, 0, n / 2);
+            div(matrizA, A21, n / 2, 0);
+            div(matrizA, A22, n / 2, n / 2);
+
+            div(matrizB, B11, 0, 0);
+            div(matrizB, B12, 0, n / 2);
+            div(matrizB, B21, n / 2, 0);
+            div(matrizB, B22, n / 2, n / 2);
+
+            int[][] M1 = multiplicarDivyVenc(restaMatrices(A11, A22), restaMatrices(B11, B22));
+            int[][] M2 = multiplicarDivyVenc(restaMatrices(A21, A22), B11);
+            int[][] M3 = multiplicarDivyVenc(A11, restaMatrices(B12, B22));
+            int[][] M4 = multiplicarDivyVenc(A22, restaMatrices(B21, B11));
+            int[][] M5 = multiplicarDivyVenc(restaMatrices(A11, A12), B22);
+            int[][] M6 = multiplicarDivyVenc(restaMatrices(A21, A11), restaMatrices(B11, B12));
+            int[][] M7 = multiplicarDivyVenc(restaMatrices(A12, A22), restaMatrices(B21, B22));
+            int[][] C11 = restaMatrices(restaMatrices(restaMatrices(M1, M4), M5), M7);
+            int[][] C12 = restaMatrices(M3, M5);
+            int[][] C21 = restaMatrices(M2, M4);
+            int[][] C22 = restaMatrices(restaMatrices(restaMatrices(M1, M3), M2), M6);
+ 
+            
+            sumaTotal(C11, resulDivyVen, 0, 0);
+            sumaTotal(C12, resulDivyVen, 0, n / 2);
+            sumaTotal(C21, resulDivyVen, n / 2, 0);
+            sumaTotal(C22, resulDivyVen, n / 2, n / 2);
+        }
+        return resulDivyVen;
+    }
+
+    public int[][] restaMatrices(int[][] m1, int[][] m2){
+        int n = m1.length;
+        int[][] m = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                m[i][j] = m1[i][j] - m2[i][j];
+            }
+        }
+        return m;
+    }
+
+    public int[][] sumaMatrices(int[][] m1, int[][] m2){
+        int n = m1.length;
+        int[][] m = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                m[i][j] = m1[i][j] + m2[i][j];
+    		}
+    	}
+        return m;
+    }
+    
+    public void div(int[][] sub1, int[][] sub2, int iB, int jB){
+        for (int i1 = 0, i2 = iB; i1 < sub2.length; i1++, i2++) {
+            for (int j1 = 0, j2 = jB; j1 < sub2.length;j1++, j2++) {
+                sub2[i1][j1] = sub1[i2][j2];
+            }
+        }
+    }
+
+    public void sumaTotal(int[][] sub1, int[][] sub2, int iB, int jB){
+        for (int i1 = 0, i2 = iB; i1 < sub1.length; i1++, i2++) {
+            for (int j1 = 0, j2 = jB; j1 < sub1.length;j1++, j2++) {
+                sub2[i2][j2] = sub1[i1][j1];
+            }
+        }
+    }
 
 	public int[][] getMatrizA() {
 		return matrizA;
