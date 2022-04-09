@@ -55,7 +55,7 @@ public class Controller {
 							}else {
 								vista.mostrarInformacion("Segunda Matriz\n"+matriz_String(mArrays.getMatrizB()));
 								vista.mostrarInformacion("Ingreso exitoso");
-								if(fila1!=fila2 || col1!=col2) {
+								if(fila1!=fila2 || col1!=col2 || (fila1==col1 && mArrays.potencia2(fila1)==false) || (fila2==col2 && mArrays.potencia2(fila2)==false)) {
 									int maxFila = mArrays.getMax(fila1, fila2);
 									int maxCol = mArrays.getMax(col1, col2);
 									int tamMax = mArrays.getMax(maxFila, maxCol);
