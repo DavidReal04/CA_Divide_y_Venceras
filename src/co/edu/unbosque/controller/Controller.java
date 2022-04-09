@@ -61,9 +61,10 @@ public class Controller {
 									int tamMax = mArrays.getMax(maxFila, maxCol);
 									mArrays.setMatrizA(mArrays.completarMatriz(mArrays.getMatrizA(), tamMax));
 									mArrays.setMatrizB(mArrays.completarMatriz(mArrays.getMatrizB(), tamMax));
-								}								
-								mArrays.multiplicarDivyVenc(mArrays.getMatrizA(),mArrays.getMatrizB());
-								vista.mostrarInformacion(matriz_String(mArrays.getResulDivyVen()));
+								}
+								int [][] resul = mArrays.multiplicarDivyVenc(mArrays.getMatrizA(),mArrays.getMatrizB());
+								
+								vista.mostrarInformacion("Matriz resultante\n"+matriz_String(resul));
 							}
 						}
 					}else {
