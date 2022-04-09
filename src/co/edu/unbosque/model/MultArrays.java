@@ -77,7 +77,6 @@ public class MultArrays {
             int[][] C12 = restaMatrices(M3, M5);
             int[][] C21 = restaMatrices(M2, M4);
             int[][] C22 = restaMatrices(restaMatrices(restaMatrices(M1, M3), M2), M6);
- 
             
             sumaTotal(C11, resulDivyVen, 0, 0);
             sumaTotal(C12, resulDivyVen, 0, n / 2);

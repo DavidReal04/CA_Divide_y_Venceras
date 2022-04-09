@@ -58,7 +58,7 @@ public class Controller {
 									vista.mostrarInformacion("Ingreso exitoso");									
 									mArrays.multiplicarNormal();
 									vista.mostrarInformacion(matriz_String(mArrays.getResulNormal()));
-								}	
+								}
 							}
 						}else {
 							vista.mostrarInformacion("Matrices incompatibles para multiplicar"
