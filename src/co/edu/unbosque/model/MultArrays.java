@@ -68,17 +68,17 @@ public class MultArrays {
             div(matrizB, B21, n / 2, 0);
             div(matrizB, B22, n / 2, n / 2);
 
-            int[][] M1 = multiplicarDivyVenc(restaMatrices(A11, A22), restaMatrices(B11, B22));
-            int[][] M2 = multiplicarDivyVenc(restaMatrices(A21, A22), B11);
+            int[][] M1 = multiplicarDivyVenc(sumaMatrices(A11, A22), sumaMatrices(B11, B22));
+            int[][] M2 = multiplicarDivyVenc(sumaMatrices(A21, A22), B11);
             int[][] M3 = multiplicarDivyVenc(A11, restaMatrices(B12, B22));
             int[][] M4 = multiplicarDivyVenc(A22, restaMatrices(B21, B11));
-            int[][] M5 = multiplicarDivyVenc(restaMatrices(A11, A12), B22);
-            int[][] M6 = multiplicarDivyVenc(restaMatrices(A21, A11), restaMatrices(B11, B12));
-            int[][] M7 = multiplicarDivyVenc(restaMatrices(A12, A22), restaMatrices(B21, B22));
-            int[][] C11 = restaMatrices(restaMatrices(restaMatrices(M1, M4), M5), M7);
-            int[][] C12 = restaMatrices(M3, M5);
-            int[][] C21 = restaMatrices(M2, M4);
-            int[][] C22 = restaMatrices(restaMatrices(restaMatrices(M1, M3), M2), M6);
+            int[][] M5 = multiplicarDivyVenc(sumaMatrices(A11, A12), B22);
+            int[][] M6 = multiplicarDivyVenc(restaMatrices(A21, A11), sumaMatrices(B11, B12));
+            int[][] M7 = multiplicarDivyVenc(restaMatrices(A12, A22), sumaMatrices(B21, B22));
+            int[][] C11 = sumaMatrices(restaMatrices(sumaMatrices(M1, M4), M5), M7);
+            int[][] C12 = sumaMatrices(M3, M5);
+            int[][] C21 = sumaMatrices(M2, M4);
+            int[][] C22 = sumaMatrices(restaMatrices(sumaMatrices(M1, M3), M2), M6);
             
             sumaTotal(C11, resulDivyVen, 0, 0);
             sumaTotal(C12, resulDivyVen, 0, n / 2);
