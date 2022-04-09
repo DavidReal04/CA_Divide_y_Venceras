@@ -138,8 +138,7 @@ public class MultArrays {
     		for (int j = 0; j < matriz[0].length; j++) {
 				matrizCuadrada[i][j] = matriz[i][j];
 			}
-    	}
-    	System.out.println(Arrays.deepToString(matrizCuadrada));
+    	}    	
     	return matrizCuadrada;
     }
     
