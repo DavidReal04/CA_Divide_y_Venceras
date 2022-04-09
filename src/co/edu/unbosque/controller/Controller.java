@@ -62,7 +62,7 @@ public class Controller {
 									vista.mostrarInformacion("Segunda Matriz\n"+matriz_String(mArrays.getMatrizB()));
 									vista.mostrarInformacion("Ingreso exitoso");									
 									mArrays.multiplicarNormal();
-									vista.mostrarInformacion(matriz_String(mArrays.getResulNormal()));
+									vista.mostrarInformacion("Matriz resultante\n"+matriz_String(mArrays.getResulNormal()));
 								}	
 							}
 						}else {
